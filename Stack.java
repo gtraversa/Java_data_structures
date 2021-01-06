@@ -1,18 +1,29 @@
-package StackThroughListComposition;
+package StackThroughListInheritance;
 import List.List;
 
 
-public class Stack {
-    private List stackList;
 
-    public Stack() {stackList = new  List("Stack");}
+public class Stack extends List {
+    public Stack() {
+        super("Stack");
+    }
 
-    public void push (Object data) {stackList.insertAtFront(data);}
+    public void push(Object data) {
+        insertAtFront(data);
+    }
 
-    public Object pop () { return stackList.removeFromFront();}
-
-    public Object getFirst ()  {return stackList.getFirst();}
+    public Object pop() {
+        return removeFromFront();
+    }
 
     @Override
-    public String toString () { return stackList.toString();}
+    public void insertAtBack(Object data) {
+        System.err.println("insertAtBack should not be called in Stack!");
+    }
+
+    @Override
+    public Object removeFromBack() {
+        System.err.println("removetAtBack should not be called in Stack!");
+        return null;
+    }
 }
